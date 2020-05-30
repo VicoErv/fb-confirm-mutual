@@ -1,5 +1,5 @@
 async function main() {
-  let min = prompt("Mutual");
+  let min = prompt("Minimal Mutual");
   let click = confirm("Auto click? Cancel: no");
   let match = 0;
   let delay = 0;
@@ -31,7 +31,7 @@ async function main() {
                 inline: "center",
               });
 
-              button.setAttribute("style", "color: red");
+              button.setAttribute("style", "background-color: red");
               match++;
 
               resolve();
