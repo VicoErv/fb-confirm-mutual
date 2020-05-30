@@ -1,11 +1,15 @@
 async function main() {
   let min = prompt("Mutual");
+  let click = confirm("Auto click? Cancel: no");
   let match = 0;
+  let delay = 0;
+
+  if (click) delay = 5000;
 
   let friends = document.querySelectorAll(".friendRequestItem");
 
   for (let friend of friends) {
-    let panel = friend.querySelector(
+    let name = friend.querySelector(
       "a[data-hovercard-prefer-more-content-show]"
     );
     let mutual = friend.querySelector("._7ebi");
@@ -17,17 +21,22 @@ async function main() {
       if (countMutual > 0 && parseInt(countMutual[0]) > parseInt(min)) {
         await new Promise(function (resolve) {
           setTimeout(function () {
-            button.scrollIntoView({
-              behavior: "auto",
-              block: "center",
-              inline: "center",
-            });
+            if (click) {
+              //TODO: implement this
+              resolve();
+            } else {
+              button.scrollIntoView({
+                behavior: "auto",
+                block: "center",
+                inline: "center",
+              });
 
-            button.setAttribute("style", "color: red");
-            match++;
+              button.setAttribute("style", "color: red");
+              match++;
 
-            resolve();
-          }, 5000);
+              resolve();
+            }
+          }, delay);
         });
       }
     }
