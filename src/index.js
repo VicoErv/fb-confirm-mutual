@@ -1,4 +1,4 @@
-function main() {
+async function main() {
   let min = prompt("Mutual");
   let match = 0;
 
@@ -15,8 +15,20 @@ function main() {
       let countMutual = mutual.innerText.match(/\d+/);
 
       if (countMutual > 0 && parseInt(countMutual[0]) > parseInt(min)) {
-        button.setAttribute("style", "color: red");
-        match++;
+        await new Promise(function (resolve) {
+          setTimeout(function () {
+            button.scrollIntoView({
+              behavior: "auto",
+              block: "center",
+              inline: "center",
+            });
+
+            button.setAttribute("style", "color: red");
+            match++;
+
+            resolve();
+          }, 5000);
+        });
       }
     }
   }
@@ -25,7 +37,7 @@ function main() {
   console.log(match);
 }
 
-let interval = setInterval(function () {
+let interval = setInterval(async function () {
   let more = document.querySelector(
     ".pam.uiBoxLightblue._5cz.uiMorePagerPrimary"
   );
@@ -43,6 +55,6 @@ let interval = setInterval(function () {
     }, 500);
   } else {
     clearInterval(interval);
-    main();
+    await main();
   }
 }, 1000);
