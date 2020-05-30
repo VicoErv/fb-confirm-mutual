@@ -1,5 +1,5 @@
 async function main() {
-  let min = prompt("Mutual");
+  let min = prompt("Minimal Mutual");
   let match = 0;
 
   let friends = document.querySelectorAll(".friendRequestItem");
@@ -23,7 +23,7 @@ async function main() {
               inline: "center",
             });
 
-            button.setAttribute("style", "color: red");
+            button.setAttribute("style", "background-color: red");
             match++;
 
             resolve();
