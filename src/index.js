@@ -33,8 +33,7 @@ async function main() {
     }
   }
 
-  console.log(min);
-  console.log(match);
+  alert(`Confirmed ${match} user`);
 }
 
 let interval = setInterval(async function () {
